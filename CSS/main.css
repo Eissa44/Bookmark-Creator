@@ -1,0 +1,57 @@
+/* START OF REGION GLOBAL STYLE */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: #535e68;
+}
+/* #3333339f, #4444449d*/
+body {
+  background-image: linear-gradient(#f7ecdebb, #f7ecdebb),
+    url(../imgs/IMG-20231211-WA0003.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "PT Sans Caption", sans-serif;
+  height: fit-content;
+}
+
+.firstFontFamily {
+  font-family: "Pacifico", cursive;
+  color: #222;
+}
+
+.secondFontFamily {
+  font-family: "Righteous", sans-serif;
+}
+/* END OF REGION  */
+
+/* start of region header  */
+header {
+  border-bottom: dotted 2px #444;
+}
+
+.primary-head span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 35%;
+  z-index: -1;
+  background-color: #acc8e5;
+  transition: all 0.5s;
+}
+
+.primary-head span:hover::after {
+  height: 70%;
+}
+/* END OF REGION  */
+
+/* start of region section */
+.form-section {
+  border-bottom: dotted 2px #444;
+}
+/* end of region  */
