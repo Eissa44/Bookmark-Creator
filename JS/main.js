@@ -7,15 +7,18 @@ let updateBtn = document.getElementById("updateBtn");
 let sitesList = [];
 
 let indexUpdate = 0;
+
 function addBook() {
-  let site = {
-    siteName: bookmarkInput.value,
-    siteUrl: siteUrlInput.value,
-  };
-  sitesList.push(site);
-  localStorage.setItem("site", JSON.stringify(sitesList));
-  clearForm();
-  viewSites();
+  if (validName() == true) {
+    let site = {
+      siteName: bookmarkInput.value,
+      siteUrl: siteUrlInput.value,
+    };
+    sitesList.push(site);
+    localStorage.setItem("site", JSON.stringify(sitesList));
+    clearForm();
+    viewSites();
+  }
 }
 // end of region
 
@@ -137,4 +140,25 @@ function clearLocalSites() {
   localStorage.clear();
   sitesList = [];
   viewSites();
+}
+
+let validName = document.getElementById("bookmarkInput");
+validName.addEventListener("input", validationName);
+
+let userMassega = document.getElementById("userMassega");
+
+function validationName() {
+  let text = bookmarkInput.value;
+  let regexName = /^[A-Z][a-z]{3,15}$/;
+  if (regexName.test(text)) {
+    bookmarkInput.classList.add("is-valid");
+    bookmarkInput.classList.remove("is-invalid");
+    userMassega.classList.add("d-none");
+    return true;
+  } else {
+    bookmarkInput.classList.add("is-invalid");
+    bookmarkInput.classList.remove("is-valid");
+    userMassega.classList.remove("d-none");
+    return false;
+  }
 }
