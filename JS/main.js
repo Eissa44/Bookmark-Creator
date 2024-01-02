@@ -9,7 +9,7 @@ let sitesList = [];
 let indexUpdate = 0;
 
 function addBook() {
-  if (validName() == true) {
+  if (validationName() == true && validationURL() == true) {
     let site = {
       siteName: bookmarkInput.value,
       siteUrl: siteUrlInput.value,
@@ -149,7 +149,7 @@ let userMassega = document.getElementById("userMassega");
 
 function validationName() {
   let text = bookmarkInput.value;
-  let regexName = /^[A-Z][a-z]{3,15}$/;
+  let regexName = /^([A-Z]|[a-z]){3,15}$/;
   if (regexName.test(text)) {
     bookmarkInput.classList.add("is-valid");
     bookmarkInput.classList.remove("is-invalid");
@@ -159,6 +159,27 @@ function validationName() {
     bookmarkInput.classList.add("is-invalid");
     bookmarkInput.classList.remove("is-valid");
     userMassega.classList.remove("d-none");
+    return false;
+  }
+}
+
+let validUrl = document.getElementById("url");
+validUrl.addEventListener("input", validationURL);
+
+let urlMassega = document.getElementById("urlMassega");
+
+function validationURL() {
+  let text = siteUrlInput.value;
+  let regexUrl = /^(ftp|http|https):\/\/[^ "]+$/;
+  if (regexUrl.test(text)) {
+    siteUrlInput.classList.add("is-valid");
+    siteUrlInput.classList.remove("is-invalid");
+    urlMassega.classList.add("d-none");
+    return true;
+  } else {
+    siteUrlInput.classList.add("is-invalid");
+    siteUrlInput.classList.remove("is-valid");
+    urlMassega.classList.remove("d-none");
     return false;
   }
 }
